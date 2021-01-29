@@ -1,0 +1,73 @@
+.nav__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 2rem 3rem;
+
+    .logo {
+        min-width: 150px;
+        max-width: 200px;
+    
+    
+        img {
+            width: 100%;
+            object-fit: cover;
+            display: block;
+            cursor: pointer;
+        }
+    }
+
+    form {
+        height: 40px;
+        width: 500px;
+        appearance: none;
+        border: none;
+        display: flex;
+        border-radius: 60px;
+        box-shadow: $inputShadow;
+
+        &:focus-within {
+            box-shadow: $inputFocusShadow;
+        }
+    
+        input {
+            display: flex;
+            flex-grow: 1;
+            background: transparent;
+            border-radius: 60px 0 0 60px;
+            backdrop-filter: blur(5px);
+            border: 1px solid #eeeeef;
+            color: inherit;
+            padding-left: 1.5rem;
+            outline: none;
+            font-size: inherit;
+        }
+    
+        input:nth-last-child(2) {
+            border-radius: 0px;
+        }
+    
+        button {
+            border-radius: 60px;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            border: none;
+            background-color: $red;
+            padding: 0 1.5rem;
+            font-weight: bold;
+            outline: none;
+            cursor: pointer;
+            transition: background 300ms ease;
+        }
+    }
+
+    .nav__options-container {
+        span {
+            margin-right: 1rem;
+            cursor: pointer;
+        }
+    }
+}
+
+
+
