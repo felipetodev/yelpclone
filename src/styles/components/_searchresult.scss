@@ -1,0 +1,43 @@
+.search__result {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    
+    & > * {
+        margin-top: 1rem;
+    }
+
+    .business__info {
+        display: flex;
+        min-width: 400px;
+
+        .img__container {
+            max-width: 210px;
+            max-height: 210px;
+            margin-right: 10px;
+    
+            img {
+                object-fit: cover;
+                border-radius: 10px;
+            }
+        }
+    
+        .search__result-details {
+            .tags {
+                border: none;
+                border-radius: 5px;
+                color: $white;
+                padding: 0 1.5px;
+                background: rgba(0, 0, 0, 0.3);
+                cursor: pointer;
+            }
+        }
+    }
+
+    .business__detail {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        min-width: 200px;
+    }
+}

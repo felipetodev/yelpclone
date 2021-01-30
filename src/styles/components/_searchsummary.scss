@@ -1,0 +1,19 @@
+.search__summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3rem;
+
+    h1 {
+        font-size: 1.5rem;
+    }
+}
+
+.search__filters {
+    display: flex;
+    justify-content: center;
+
+    button {
+        margin-right: 10px;
+    }
+}

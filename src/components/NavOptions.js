@@ -1,11 +1,10 @@
 export default function NavOptions() {
     return (
-        <div className='nav__options-container'>
-            <span>For Business</span>
-            <span>Write a Review</span>
-            <span>🌑</span>
-            <span>🔔</span>
-            <img src='' alt='user' />
+        <div className="nav__options">
+            <a href='/asdf'>Restaurants 🍴</a>
+            <a href='/asdf'>Home Services 🏠</a>
+            <a href='/asdf'>Auto Services 🚗</a>
+            <a href='/asdf'>More ➕</a>
         </div>
     )
 }
