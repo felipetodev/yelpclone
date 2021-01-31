@@ -25,6 +25,6 @@ export default function Query() {
     if (error) return <p>Error :(</p>;
   
     return data.search.map((item) => (
-      <p>{item.total}</p>
+      <p>Response: {item.total}</p>
     ));
   }
