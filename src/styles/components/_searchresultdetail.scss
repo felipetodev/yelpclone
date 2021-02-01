@@ -3,6 +3,20 @@
     height: 420px;
     position: relative;
     color: $white;
+
+    button {
+        border: none;
+        border-radius: 5px;
+        color: $white;
+        padding: 5px 10px;
+        background: rgba(0, 0, 0, 0.3);
+        text-transform: capitalize;
+        cursor: pointer;
+
+        &:not(:last-child) {
+            margin-right: 7px;
+        }
+    }
     
     &::before {
         content: '';
@@ -53,14 +67,18 @@
             span {
                 margin-right: 7px;
             }
+        }
 
-            button {
-                border: none;
-                border-radius: 5px;
-                color: $white;
-                padding: 5px 10px;
-                background: rgba(0, 0, 0, 0.3);
-                cursor: pointer;
+        .store__info {
+            margin: 7px 0px;
+
+            span {
+                margin-right: 7px;
+            }
+
+            .is__claimed {
+                color: $claimed;
+                font-weight: bold;
             }
         }
 

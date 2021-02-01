@@ -1,7 +1,7 @@
 import { yelpSearchBusinessesURL } from '../api'
 import axios from 'axios'
 
-export const loadSearchBusinesses = () => async (dispatch) => {
+export const loadSearchBusinesses = (term_key, location_key) => async (dispatch) => {
     const options = {
         headers: {
             Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`,
@@ -10,7 +10,11 @@ export const loadSearchBusinesses = () => async (dispatch) => {
         }
     }
 
-    const businessesData = await axios.get(yelpSearchBusinessesURL(), options)
+    dispatch({
+        type: 'LOADING',
+    })
+
+    const businessesData = await axios.get(yelpSearchBusinessesURL(term_key, location_key), options)
 
     dispatch({
         type: "FETCH_BUSINESSES",

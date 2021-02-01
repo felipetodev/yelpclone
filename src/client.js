@@ -3,6 +3,7 @@ import { setContext } from '@apollo/client/link/context'
 
 const httpLink = createHttpLink({
   uri: 'https://api.yelp.com/v3/graphql',
+  credentials: 'include',
 })
 
 const authLink = setContext((_, { headers }) => {

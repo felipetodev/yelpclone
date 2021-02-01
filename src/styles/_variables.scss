@@ -1,6 +1,7 @@
-
+// General Colors
 $red: #f43939;
 $white: #ffffff;
+$claimed: #0ab3c9;
 
 // Text
 $black: #333;
@@ -9,3 +10,9 @@ $links: #0073bb;
 // Input
 $inputShadow: 0 2px 18px rgba(0,0,0,.15);
 $inputFocusShadow: 0 2px 18px rgba(244, 57, 57, 0.5);
+
+// Borders
+$cardBorders: 1px solid #eeeeef;
+
+//Transitions
+$hoverTransitions: all 300ms ease;

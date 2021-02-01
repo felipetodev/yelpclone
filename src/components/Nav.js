@@ -6,7 +6,6 @@ import { useHistory } from 'react-router-dom'
 export default function Nav({ term, location }) {
 
     const history = useHistory()
-    console.log(history.location)
 
     const search = (term, location) => {
         const urlEncodedTerm = encodeURI(term)
