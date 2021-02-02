@@ -1,6 +1,6 @@
 .search__result {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     width: 750px;
     height: 250px;
     padding: 2rem;
@@ -22,11 +22,27 @@
             max-width: 210px;
             max-height: 210px;
             margin-right: 10px;
+            position: relative;
     
             img {
                 object-fit: cover;
                 border-radius: 10px;
                 height: 100%;
+            }
+
+            span {
+                position: absolute;
+                top: 0;
+                left: 0;
+                padding: 7px;
+                margin: 5px;
+                background: $inputShadow;
+                border: 1px solid $white;
+                border-radius: 50%;
+
+                &:hover {
+                    background: $red;
+                }
             }
         }
     
@@ -43,6 +59,14 @@
                 padding: 0 1.5px;
                 background: rgba(0, 0, 0, 0.3);
                 cursor: pointer;
+
+                &:first-child {
+                    margin-left: 7px;
+                }
+            }
+
+            p {
+                margin-top: 7px;
             }
         }
     }
@@ -50,7 +74,6 @@
     .business__detail {
         display: flex;
         flex-direction: column;
-        align-items: flex-end;
-        min-width: 200px;
+        font-size: 0.8rem;
     }
 }

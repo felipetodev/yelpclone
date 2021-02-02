@@ -1,4 +1,6 @@
 import { useSelector } from 'react-redux'
+import ScheduleStatus from './ScheduleStatus'
+import Rating from './Rating'
 
 export default function SearchResultDetail() {
 
@@ -15,7 +17,7 @@ export default function SearchResultDetail() {
                     <h1>{detail.name}</h1>
                     <div className='store__detail'>
                         <div className='rating'>
-                            <span>{detail.rating}⭐⭐⭐</span>
+                            <Rating rating={detail.rating}/>
                         </div>
                         <span>{detail.review_count} reviews</span>
                         <button>Details</button>
@@ -28,7 +30,10 @@ export default function SearchResultDetail() {
                         ))) : null}
                     </div>
                     <div className='store__status'>
-                        <span>{detail.is_closed = false ? 'Closed 🔴' : 'Open 🟢' }</span>
+                        <ScheduleStatus 
+                            hours={detail.hours ? detail.hours[0].is_open_now : ''}
+                            schedule={detail.hours ? detail.hours[0].open : ''}
+                        />
                         <span>11:00AM - 9:00PM</span>
                         <p>Hours updated 2 days ago</p>
                     </div>

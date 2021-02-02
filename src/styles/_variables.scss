@@ -7,6 +7,10 @@ $claimed: #0ab3c9;
 $black: #333;
 $links: #0073bb;
 
+// Fonts
+$logo: 'Fredoka One', sans-serif;
+$content: 'Open Sans', sans-serif;
+
 // Input
 $inputShadow: 0 2px 18px rgba(0,0,0,.15);
 $inputFocusShadow: 0 2px 18px rgba(244, 57, 57, 0.5);
@@ -14,5 +18,7 @@ $inputFocusShadow: 0 2px 18px rgba(244, 57, 57, 0.5);
 // Borders
 $cardBorders: 1px solid #eeeeef;
 
-//Transitions
+// Transitions
 $hoverTransitions: all 300ms ease;
+$scaleTransition: scale(1.1);
+

@@ -1,5 +1,9 @@
 export default function Spinner() {
     return (
-        <h2>Loading...</h2>
+        <div className="loader">
+            <div className="dot first"></div>
+            <div className="dot second"></div>
+            <div className="dot third"></div>
+        </div>
     )
 }

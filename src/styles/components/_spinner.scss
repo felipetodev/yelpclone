@@ -1,0 +1,51 @@
+.loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding-top: 2.5rem;
+    text-align: center;
+    white-space: nowrap ;
+
+    .dot{ 
+        width: 6px;
+        height: 6px ;
+        margin-right: 4px ;
+        display: inline-block;
+        vertical-align: middle;
+        background-color: rgb(72, 72, 72);
+        border-radius: 100%;
+        animation: keyframe_animate 0.8s infinite linear both;
+
+        &.first {
+            animation-delay: -0.3s;
+        }
+        
+        &.second {
+            animation-delay: -0.15s;
+        }
+
+        @keyframes keyframe_animate{
+            0%{
+                opacity: 0;
+            }
+            
+          30%{
+                opacity: 1;
+            }
+            
+            50%{
+                opacity: 1;
+            }
+            
+            80%{
+                opacity: 0;
+            }
+            
+            100%{
+                opacity: 0;
+            }
+          
+        }
+    }
+}

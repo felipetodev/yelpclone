@@ -1,7 +1,22 @@
 .nav__options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
     margin: 0 auto;
-    padding: 1rem 0;
-    width: 500px;
-    display: flex;
-    justify-content: space-around;
+    text-align: center;
+    padding: 1rem 0 2rem 0;
+
+    @media (min-width: 768px) {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 0;
+        width: 800px;
+        
+        a {
+            transition: $hoverTransitions;
+        }
+
+        a:hover {
+            transform: $scaleTransition;
+        }
+    }
 }

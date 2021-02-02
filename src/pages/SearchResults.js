@@ -14,7 +14,7 @@ export default function SearchResults() {
     const locationPath = params.get('find_loc')
 
     
-    const { businesses, isLoading } = useSelector((state) => state.businesses)
+    const { businesses } = useSelector((state) => state.businesses)
 
     return (
         <div>
@@ -22,20 +22,18 @@ export default function SearchResults() {
             <NavOptions />
             <SearchSummary term={termPath} location={locationPath} />
             {
-                !isLoading ? businesses.map((business) => (
+                businesses.length ? businesses.map((business) => (
                     <div key={business.id}>
                         <SearchResult 
                             id={business.id}
                             name={business.name}
                             alias={business.alias}
                             image={business.image_url}
-                            status={business.is_closed}
-                            // categories={business.categories[0].alias}
+                            categories={business.categories}
                             rating={business.rating}
                             review={business.review_count}
-                            coordinates={business.coordinates}
                             phone={business.display_phone}
-                            location={business.location.address1}
+                            location={business.location.display_address}
                             price={business.price}
                         />
                     </div>

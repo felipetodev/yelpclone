@@ -10,12 +10,18 @@ export const loadDetailBusiness = (id) => async (dispatch) => {
         }
     }
 
-    const detailData = await axios.get(yelpSearchBusinessURL(id), options)
+    try {
+        const detailData = await axios.get(yelpSearchBusinessURL(id), options)
 
-    dispatch({
-        type: "FETCH_BUSINESS_DETAIL",
-        payload: {
-            detail: detailData.data,
-        }
-    })
+        dispatch({
+            type: "FETCH_BUSINESS_DETAIL",
+            payload: {
+                detail: detailData.data,
+            }
+        })
+    } catch (err) {
+        let message = `Ops! an error has ocurred :(`
+        alert(message)
+    }
+    
 }

@@ -13,7 +13,7 @@ export default function Logo() {
     return (
         <div className='logo'>
             <Link to='/' onClick={clearSearch}>
-                <img src='' alt='logo' />
+                GURU<span>EAT</span>
             </Link>
         </div>
     )

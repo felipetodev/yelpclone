@@ -14,12 +14,18 @@ export const loadSearchBusinesses = (term_key, location_key) => async (dispatch)
         type: 'LOADING',
     })
 
-    const businessesData = await axios.get(yelpSearchBusinessesURL(term_key, location_key), options)
+    try {
+        const businessesData = await axios.get(yelpSearchBusinessesURL(term_key, location_key), options)
 
-    dispatch({
-        type: "FETCH_BUSINESSES",
-        payload: {
-            businesses: businessesData.data.businesses,
-        }
-    })
+        dispatch({
+            type: "FETCH_BUSINESSES",
+            payload: {
+                businesses: businessesData.data.businesses,
+            }
+        }) 
+    } catch (err) {
+        console.error(err)
+    }
+
+    
 }
