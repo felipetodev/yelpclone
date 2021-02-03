@@ -1,12 +1,54 @@
+import { useEffect } from 'react'
 import Nav from '../components/Nav'
 import NavOptions from '../components/NavOptions'
+import Hero from '../components/Hero'
+import Wrapper from '../components/Wrapper'
+import SearchResult from '../components/SearchResult'
+import Spinner from '../components/Spinner'
+import { loadSearchBusinesses } from '../actions/BusinessesSearchAction'
+
+import { useDispatch, useSelector } from 'react-redux'
 
 export default function Home() {
-    return (
-        <>
-            <Nav />
-            <NavOptions />
-            <img src='https://s3-media0.fl.yelpcdn.com/assets/srv0/yelp_large_assets/65e6a224ada4/assets/img/home/hero_photos/cz8iYo13MpBBGlFLlkA8Sw.jpg' alt='hero-bg'/>
-        </>
-    )
+
+  const dispatch = useDispatch()
+
+  const lastTerm = localStorage.getItem('lastTerm') || ''
+  const lastLocation = localStorage.getItem('lastLocation') || 'Chile'
+
+  useEffect(() => {
+      dispatch(loadSearchBusinesses(lastTerm, lastLocation))
+  }, [dispatch, lastTerm, lastLocation])
+
+  const { businesses } = useSelector((state) => state.businesses)
+
+  return (
+    <>
+      <Wrapper>
+        <Nav />
+        <NavOptions />
+        <Hero />
+      </Wrapper>
+      <p>Last Search: {lastTerm} in {lastLocation}</p>
+      {
+        businesses.length ? businesses.map((business) => (
+          <div key={business.id}>
+            <SearchResult
+              id={business.id}
+              name={business.name}
+              alias={business.alias}
+              image={business.image_url}
+              categories={business.categories}
+              rating={business.rating}
+              review={business.review_count}
+              phone={business.display_phone}
+              location={business.location.display_address}
+              price={business.price}
+              transactions={business.transactions}
+            />
+          </div>
+        )) : <Spinner />
+      }
+    </>
+  )
 }

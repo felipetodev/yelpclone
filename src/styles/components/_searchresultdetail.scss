@@ -3,6 +3,13 @@
     height: 420px;
     position: relative;
     color: $white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media (min-width: 768px) {
+        justify-content: flex-start;
+    }
 
     button {
         border: none;
@@ -35,9 +42,15 @@
 
     .search__detail {
         position: absolute;
-        padding: 5rem 3rem;
+        padding: 5rem 0;
         bottom: 0;
         display: flex;
+        flex-direction: column;
+
+        @media (min-width: 768px) {
+            flex-direction: row;
+            padding: 5rem 3rem;
+        }
         
         .store__logo {
             width: 100px;
@@ -87,6 +100,30 @@
 
             span {
                 margin-right: 7px;
+            }
+
+            strong {
+                margin: 0 7px;
+            }
+
+            .is-open {
+                color: $open;
+                font-weight: bold;
+            }
+
+            .is-closed {
+                color: $red;
+                font-weight: bold;
+            }
+            
+            .remove-dot {
+                display: none;
+            }
+
+            p:last-of-type {
+                .display-dot {
+                    display: none;
+                }
             }
         }
     }

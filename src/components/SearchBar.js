@@ -16,11 +16,16 @@ export default function SearchBar(props) {
         setLocation(e.target.value)
     }
 
+    const keywordTermToUse = term || localStorage.getItem('lastTerm')
+    const keywordLocationToUse = location || localStorage.getItem('lastLocation')
+
     const onSubmitForm = (e) => {
         e.preventDefault()
         if(typeof props.search === 'function') {
             props.search(term, location)
-            dispatch(loadSearchBusinesses(term, location))
+            dispatch(loadSearchBusinesses(keywordTermToUse, keywordLocationToUse))
+            localStorage.setItem('lastTerm', term)
+            localStorage.setItem('lastLocation', location)
         }
     }
 

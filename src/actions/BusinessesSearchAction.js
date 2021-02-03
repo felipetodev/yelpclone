@@ -20,11 +20,19 @@ export const loadSearchBusinesses = (term_key, location_key) => async (dispatch)
         dispatch({
             type: "FETCH_BUSINESSES",
             payload: {
-                businesses: businessesData.data.businesses,
+                businesses: businessesData.data,
             }
-        }) 
+        })
+
+        dispatch({
+            type: "TOTAL_BUSINESSES",
+            payload: {
+                businesses: businessesData.data,
+            }
+        })
     } catch (err) {
-        console.error(err)
+        let message = `Ops! an error has ocurred :(`
+        alert(message)
     }
 
     

@@ -40,6 +40,10 @@
                 border: 1px solid $white;
                 border-radius: 50%;
 
+                .loved {
+                    background: $red;
+                }
+
                 &:hover {
                     background: $red;
                 }
@@ -51,7 +55,7 @@
             h2:hover {
                 text-decoration: underline;
             }
-
+            
             .tags {
                 border: none;
                 border-radius: 5px;
@@ -67,6 +71,19 @@
 
             p {
                 margin-top: 7px;
+            }
+
+            .business__method {
+                margin: 3px 0;
+                text-transform: capitalize;
+
+                span:not(:last-of-type) {
+                    margin-right: 7px;
+                }
+
+                strong {
+                    color: $open;
+                }
             }
         }
     }
