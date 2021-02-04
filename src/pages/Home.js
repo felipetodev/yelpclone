@@ -14,7 +14,7 @@ export default function Home() {
   const dispatch = useDispatch()
 
   const lastTerm = localStorage.getItem('lastTerm') || ''
-  const lastLocation = localStorage.getItem('lastLocation') || 'Chile'
+  const lastLocation = localStorage.getItem('lastLocation') || 'Chile' //<-- add Geolocation instead
 
   useEffect(() => {
       dispatch(loadSearchBusinesses(lastTerm, lastLocation))
@@ -29,7 +29,10 @@ export default function Home() {
         <NavOptions />
         <Hero />
       </Wrapper>
-      <p>Last Search: {lastTerm} in {lastLocation}</p>
+      {lastTerm ? (<div className='recent__activity'>
+        <h2>Recent Activity</h2>
+        <span>{lastTerm} in {lastLocation}</span>
+      </div>): ''}
       {
         businesses.length ? businesses.map((business) => (
           <div key={business.id}>

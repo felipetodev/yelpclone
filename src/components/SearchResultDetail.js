@@ -4,11 +4,8 @@ import Rating from './Rating'
 import Spinner from './Spinner'
 
 export default function SearchResultDetail() {
-
     const { detail, hourSchedule } = useSelector((state) => state.detail)
-    
-    // Complete Hours Schedule
-    // const detailHoursSchedule = detail.hours[0].open.map((item) => <p>{item.start} - {item.end}</p>)
+    const timeFormat = (num) => num.match(/.{1,2}/g).join(":")
 
     return (
         <>
@@ -39,7 +36,7 @@ export default function SearchResultDetail() {
                                 hours={detail.hours ? detail.hours[0].is_open_now : ''}
                             />
                             {hourSchedule.map(hour => (
-                                <p key={hour.start + hour.end}>{hour.start} - {hour.end} 
+                                <p key={hour.start + hour.end}>{timeFormat(hour.start)} - {timeFormat(hour.end)} 
                                     <strong className={hourSchedule.length > 1 ? 'display-dot' : 'remove-dot'}>•</strong>
                                 </p>
                             ))}

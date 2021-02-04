@@ -1,9 +1,11 @@
 .search__result {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    width: 750px;
-    height: 250px;
-    padding: 2rem;
+    position: relative;
+    width: 90%;
+    height: 100%;
+    padding: 1.5rem;
     margin: 2rem auto;
     border: $cardBorders;
     border-radius: 4px;
@@ -14,23 +16,50 @@
         box-shadow: 0 0 10px rgba(0,0,0,.1);
     }
 
+    .viewed {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        font-size: 0.8rem;
+        padding: 10px;
+    }
+
+    @media (min-width: 768px) {
+        flex-direction: row;
+        width: 750px;
+    }
+
     .business__info {
         display: flex;
-        min-width: 400px;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+
+        @media (min-width: 768px) {
+            flex-direction: row;
+            align-items: normal;
+            text-align: start;
+        }
 
         .img__container {
-            max-width: 210px;
-            max-height: 210px;
-            margin-right: 10px;
+            width: 210px;
+            height: 210px;
+            border-radius: 10px;
             position: relative;
+            overflow: hidden;
+
+            @media (min-width: 768px) {
+                max-width: 210px;
+                max-height: 210px;
+                margin-right: 10px;
+            }
     
             img {
                 object-fit: cover;
-                border-radius: 10px;
                 height: 100%;
             }
 
-            span {
+            .tags {
                 position: absolute;
                 top: 0;
                 left: 0;
@@ -40,18 +69,17 @@
                 border: 1px solid $white;
                 border-radius: 50%;
 
-                .loved {
-                    background: $red;
-                }
-
                 &:hover {
                     background: $red;
                 }
             }
+
+            .fav {
+                background: $red;
+            }
         }
     
         .search__result-details {
-
             h2:hover {
                 text-decoration: underline;
             }
@@ -91,6 +119,12 @@
     .business__detail {
         display: flex;
         flex-direction: column;
+        align-items: center;
         font-size: 0.8rem;
+        padding-top: 7px;
+
+        @media (min-width: 768px) {
+            align-items: normal;
+        }
     }
 }

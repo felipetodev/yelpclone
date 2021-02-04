@@ -34,6 +34,4 @@ export const loadSearchBusinesses = (term_key, location_key) => async (dispatch)
         let message = `Ops! an error has ocurred :(`
         alert(message)
     }
-
-    
 }

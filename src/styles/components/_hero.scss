@@ -4,3 +4,20 @@
         object-fit: cover;
     }
 }
+
+.recent__activity {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 0;
+    
+    h2 {
+        color: $red;
+    }
+
+    span {
+        text-transform: capitalize;
+        font-size: 0.85rem;
+    }
+}

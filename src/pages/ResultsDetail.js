@@ -8,12 +8,12 @@ import { loadDetailBusiness } from '../actions/BusinessDetailAction'
 
 export default function ResultsDetail() {
     const location = useLocation()
-    const pathId = location.pathname.split('/')[2]
-
     const dispatch = useDispatch()
+    const pathId = location.pathname.split('/')[2]
 
     useEffect(() => {
         dispatch(loadDetailBusiness(pathId))
+        localStorage.setItem('viewed', JSON.stringify({key: pathId}))
     }, [pathId, dispatch])
 
     return(

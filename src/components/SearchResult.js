@@ -1,16 +1,23 @@
+import { useState } from 'react'
 import Rating from '../components/Rating'
 import Tags from '../components/Tags'
 import { Link } from 'react-router-dom'
 import imageError from '../assets/images/no-image.png'
 
 export default function SearchResult({ id, name, alias, image, categories, rating, review, phone, location, price, transactions }) {
-
-    // const favStoreToUse = localStorage.getItem(alias)
+    const [ fav, setFav ] = useState('')
+    const favStoreToUse = localStorage.getItem(alias)
 
     const saveToFavourite = (e) => {
         e.preventDefault()
-        console.log(id)
-        // localStorage.setItem(alias, id)
+
+        if(favStoreToUse === id) {
+            localStorage.removeItem(alias, id)
+            setFav(!fav)
+        } else {
+            localStorage.setItem(alias, id)
+            setFav(!fav)
+        }
     }
 
     return (
@@ -18,7 +25,7 @@ export default function SearchResult({ id, name, alias, image, categories, ratin
             <div className='business__info'>
                 <div className='img__container'>
                     <img src={image ? image : imageError} alt={alias} />
-                    <span className='tags' onClick={saveToFavourite}>💖</span>
+                    <span className={favStoreToUse === id ? 'tags fav' : 'tags'} onClick={saveToFavourite}>❤️</span>
                 </div>
                 <div className='search__result-details'>
                     <h2>{name}</h2>
@@ -43,6 +50,7 @@ export default function SearchResult({ id, name, alias, image, categories, ratin
                     <p key={id + address}>{address}</p>
                 ))}
             </div>
+            {/* <span className='viewed'>👁️</span> */}
         </Link>
     )
 }

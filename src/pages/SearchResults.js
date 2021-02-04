@@ -4,16 +4,22 @@ import SearchSummary from "../components/SearchSummary";
 import SearchResult from "../components/SearchResult";
 import Spinner from '../components/Spinner'
 import { useLocation } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { useEffect } from "react";
+import { loadSearchBusinesses } from "../actions/BusinessesSearchAction";
 
 
 export default function SearchResults() {
+    const dispatch = useDispatch()
     const location = useLocation()
     const params = new URLSearchParams(location.search)
     const termPath = params.get('find_desc')
     const locationPath = params.get('find_loc')
 
-    
+    useEffect(() => {
+        dispatch(loadSearchBusinesses(termPath, locationPath))
+    }, [dispatch, termPath, locationPath])
+
     const { businesses } = useSelector((state) => state.businesses)
 
     return (
@@ -35,6 +41,7 @@ export default function SearchResults() {
                             phone={business.display_phone}
                             location={business.location.display_address}
                             price={business.price}
+                            transactions={business.transactions}
                         />
                     </div>
                 )) : <Spinner />

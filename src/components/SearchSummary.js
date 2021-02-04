@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux'
 export default function SearchSummary({ term, location }) {
 
     const { businesses, totalBusinesses } = useSelector((state) => state.businesses)
-    console.log(totalBusinesses)
     
     return (
         <>
@@ -18,7 +17,10 @@ export default function SearchSummary({ term, location }) {
                     <button>$$$</button>
                     <button>$$$$</button>
                 </div>
-                <button>Open Now</button>
+                <div className='method__filter'>
+                    <button>Delivery</button>
+                    <button>Takeout</button>
+                </div>
             </div>
         </>
     )
