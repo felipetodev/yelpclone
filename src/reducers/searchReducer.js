@@ -14,6 +14,8 @@ const searchReducer = (state=initState, action) => {
             return { ...state, isLoading: false}
         case "CLEAR_BUSINESS_FETCH":
             return { ...state, businesses: [] }
+        case "CLEAR_ALL":
+            return { ...state, businesses: [], detail: [], reviews: [], hourSchedule: [] }
         default:
             return { ...state }
     }
