@@ -1,4 +1,4 @@
-import { yelpSearchBusinessURL } from '../api'
+import { yelpSearchBusinessURL, yelpSearchBusinessReviewURL } from '../api'
 import axios from 'axios'
 
 export const loadDetailBusiness = (id) => async (dispatch) => {
@@ -24,4 +24,23 @@ export const loadDetailBusiness = (id) => async (dispatch) => {
         alert(message)
     }
     
+}
+
+export const loadBusinessReviews = (id) => async (dispatch) => {
+    const options = {
+        headers: {
+            Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`,
+            withCredentials: true,
+            'Content-Type': 'application/json',
+        }
+    }
+
+    const searchReviews = await axios.get(yelpSearchBusinessReviewURL(id), options)
+
+    dispatch({
+        type: "FETCH_BUSINESS_REVIEWS",
+        payload: {
+            detail: searchReviews.data,
+        }
+    })
 }

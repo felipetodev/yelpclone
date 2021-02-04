@@ -5,3 +5,4 @@ const cors_url = 'https://cors-anywhere.herokuapp.com/'
 
 export const yelpSearchBusinessesURL = (term_key, location_key) => `${cors_url}${base_url}/businesses/search?term=${term_key}&location=${location_key}`
 export const yelpSearchBusinessURL = (id) => `${cors_url}${base_url}/businesses/${id}`
+export const yelpSearchBusinessReviewURL = (id) => `${cors_url}${base_url}/businesses/${id}/reviews`

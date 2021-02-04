@@ -12,7 +12,7 @@ const searchReducer = (state=initState, action) => {
             return { ...state, totalBusinesses: action.payload.businesses.total }
         case "LOADING":
             return { ...state, isLoading: false}
-        case "CLEAR_FETCH":
+        case "CLEAR_BUSINESS_FETCH":
             return { ...state, businesses: [] }
         default:
             return { ...state }
