@@ -18,9 +18,6 @@ export default function SearchResults() {
 
     useEffect(() => {
         dispatch(loadSearchBusinesses(termPath, locationPath))
-        dispatch({
-            type: 'CLEAR_DETAIL_FETCH'
-        })
     }, [dispatch, termPath, locationPath])
 
     const { businesses } = useSelector((state) => state.businesses)

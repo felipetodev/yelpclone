@@ -1,5 +1,4 @@
 export default function Reviews({ id, text, timeCreated, user }) {
-    console.log(user)
     return (
         <div className='review__container'>
             <div className='user__container'>

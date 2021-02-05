@@ -5,9 +5,8 @@ export default function Logo() {
     const dispatch = useDispatch()
 
     const clearSearch = () => {
-        dispatch({
-            type: 'CLEAR_ALL',
-        })
+        dispatch({ type: 'CLEAR_BUSINESS_FETCH' })
+        dispatch({ type: 'CLEAR_DETAIL_FETCH' })
     }
 
     return (
