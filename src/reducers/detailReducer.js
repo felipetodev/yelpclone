@@ -15,7 +15,7 @@ const detailReducer = (state=initState, action) => {
             return { ...state, 
                 detail: action.payload.detail, 
                 hourSchedule: getActualOpenHours,
-                reviews: action.payload.detail.reviews
+                reviews: action.payload.reviews
             }
         }
         case "CLEAR_DETAIL_FETCH":

@@ -18,7 +18,7 @@ export const loadDetailBusiness = (id) => async (dispatch) => {
             type: "FETCH_BUSINESS_DETAIL",
             payload: {
                 detail: detailData.data,
-                reviews: searchReviews.data,
+                reviews: searchReviews.data.reviews,
             }
         })
     } catch (err) {
