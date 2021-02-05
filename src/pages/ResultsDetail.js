@@ -26,7 +26,7 @@ export default function ResultsDetail() {
             <NavOptions />
             <SearchResultDetail />
             <h4 className='review__detail'>Review Highlights</h4>
-            {reviews ? 
+            {reviews.length ? 
                 (reviews.map((review) => (
                     <Reviews 
                         key={review.id} 
