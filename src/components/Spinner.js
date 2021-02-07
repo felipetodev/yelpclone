@@ -1,9 +1,11 @@
-export default function Spinner() {
+export default function Spinner({ loading }) {
     return (
-        <div className="loader">
-            <div className="dot first"></div>
-            <div className="dot second"></div>
-            <div className="dot third"></div>
-        </div>
+        loading ? (
+            <div className="loader">
+                <div className="dot first"></div>
+                <div className="dot second"></div>
+                <div className="dot third"></div>
+            </div>
+        ) : ''
     )
 }

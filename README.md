@@ -15,6 +15,18 @@ REACT_APP_API_KEY="TU API KEY YELP"
 
 La puedes conseguir registrándote en: https://www.yelp.com/developers/v3/manage_app
 
+⚠️ NOTA: IMPORTANTE
+
+Si tienes problemas consultando la data en nuestra aplicación, haz lo siguiente:
+
+Una vez añadida tu API_KEY, debes solicitar acceso en el siguiente link ¹, clickeando en el botón:
+
+👉 'Request temporary access to the demo server' 👈
+
+https://cors-anywhere.herokuapp.com/corsdemo ¹
+
+Esto evitara que tengamos problemas de CORS al consultar la API de yelp.
+
 ``` 
 
 ## Librerías Utilizadas 
@@ -22,11 +34,11 @@ La puedes conseguir registrándote en: https://www.yelp.com/developers/v3/manage
 - [x] 🔹 React JS 
 - [x] 🔹 Redux 
 - [x] 🔹 Redux-Thunk 
-- [x] 🔹 Axios 
+- [x] 🔹 ~~Axios~~ Fetch
 - [x] 🔹 Sass 
 
 ## Próximas características 
 
-- [x] 🔹 Geolocalización 
+- [x] 🔹 Geolocalización ✔️
 - [x] 🔹 Modo oscuro 
 - [x] 🔹 Filtrar por $ / Tipo de entrega / etc. 

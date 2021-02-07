@@ -20,13 +20,14 @@ export default function SearchResults() {
         dispatch(loadSearchBusinesses(termPath, locationPath))
     }, [dispatch, termPath, locationPath])
 
-    const { businesses } = useSelector((state) => state.businesses)
+    const { businesses, loading } = useSelector((state) => state.businesses)
 
     return (
         <div>
             <Nav term={termPath} location={locationPath}/>
             <NavOptions />
             <SearchSummary term={termPath} location={locationPath} />
+            <Spinner loading={loading} />
             {
                 businesses.length ? businesses.map((business) => (
                     <div key={business.id}>
@@ -44,7 +45,7 @@ export default function SearchResults() {
                             transactions={business.transactions}
                         />
                     </div>
-                )) : <Spinner />
+                )) : ''
             }
         </div>
     )

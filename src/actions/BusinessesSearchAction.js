@@ -1,5 +1,4 @@
 import { yelpSearchBusinessesURL } from '../api'
-import axios from 'axios'
 
 export const loadSearchBusinesses = (term_key, location_key) => async (dispatch) => {
     const options = {
@@ -11,20 +10,22 @@ export const loadSearchBusinesses = (term_key, location_key) => async (dispatch)
     }
 
     dispatch({
-        type: 'LOADING',
+        type: "LOADING_BUSINESSES"
     })
 
-    try {
-        const businessesData = await axios.get(yelpSearchBusinessesURL(term_key, location_key), options)
-
-        dispatch({
-            type: "FETCH_BUSINESSES",
-            payload: {
-                businesses: businessesData.data
-            }
+    await fetch(yelpSearchBusinessesURL(term_key, location_key), options)
+        .then(res => res.json())
+        .then(businessesData => {
+            dispatch({
+                type: "FETCH_BUSINESSES",
+                payload: {
+                    businesses: businessesData
+                }
+            })
         })
-    } catch (err) {
-        let message = `Ops! an error has ocurred :(`
-        alert(message)
-    }
+        .catch(err => {
+            dispatch({
+                type: "FETCH_BUSINESSES_ERROR"
+            })
+        })
 }

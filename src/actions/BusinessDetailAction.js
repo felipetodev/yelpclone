@@ -1,5 +1,4 @@
 import { yelpSearchBusinessURL, yelpSearchBusinessReviewURL } from '../api'
-import axios from 'axios'
 
 export const loadDetailBusiness = (id) => async (dispatch) => {
     const options = {
@@ -10,20 +9,30 @@ export const loadDetailBusiness = (id) => async (dispatch) => {
         }
     }
 
-    try {
-        const detailData = await axios.get(yelpSearchBusinessURL(id), options)
-        const searchReviews = await axios.get(yelpSearchBusinessReviewURL(id), options)
+    dispatch({
+        type: "LOADING_DETAIL"
+    })
 
-        dispatch({
-            type: "FETCH_BUSINESS_DETAIL",
-            payload: {
-                detail: detailData.data,
-                reviews: searchReviews.data.reviews,
-            }
+    Promise.all([
+        await fetch(yelpSearchBusinessURL(id), options),
+        await fetch(yelpSearchBusinessReviewURL(id), options)
+    ])
+        .then(responses => Promise.all(responses.map(res => res.json())))
+        .then(json => {
+            const detailData = json[0]
+            const searchReviews = json[1]
+            dispatch({
+                type: "FETCH_BUSINESS_DETAIL",
+                payload: {
+                    detail: detailData,
+                    reviews: searchReviews.reviews,
+                }
+            })
         })
-    } catch (err) {
-        let message = `Ops! an error has ocurred :(`
-        alert(message)
-    }
-    
+        .catch(err => {
+            console.error(err)
+            dispatch({
+                type: "LOADING_DETAIL_ERROR"
+            })
+        })
 }

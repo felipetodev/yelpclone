@@ -6,6 +6,7 @@ import { useLocation } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { loadDetailBusiness } from '../actions/BusinessDetailAction'
 import Reviews from '../components/Reviews';
+import Spinner from '../components/Spinner';
 
 export default function ResultsDetail() {
     const location = useLocation()
@@ -14,17 +15,17 @@ export default function ResultsDetail() {
 
     useEffect(() => {
         dispatch(loadDetailBusiness(pathId))
-        dispatch({ type: 'CLEAR_BUSINESS_FETCH' })
         localStorage.setItem('viewed', pathId)
     }, [pathId, dispatch])
 
-    const { reviews } = useSelector((state) => state.detail)
+    const { reviews, loading } = useSelector((state) => state.detail)
 
     return(
         <div>
             <Nav />
             <NavOptions />
             <SearchResultDetail />
+            <Spinner loading={loading} />
             <h4 className='review__detail'>Review Highlights</h4>
             {reviews.length ? 
                 (reviews.map((review) => (

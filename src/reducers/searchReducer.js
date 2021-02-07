@@ -1,18 +1,28 @@
 const initState = {
     businesses: [],
+    mostValuesBusinesses: [],
     totalBusinesses: [],
-    isLoading: true,
+    errorMsg: '',
+    loading: false
 }
 
 const searchReducer = (state=initState, action) => {
     switch(action.type) {
+        case "LOADING_BUSINESSES":
+            return { ...state, loading: true, errorMsg: '' }
         case "FETCH_BUSINESSES":
+            let businessesData = action.payload.businesses.businesses
+            const getBusinessesFiltered = businessesData.filter((item, index) => index < 5)
+
             return { ...state, 
-                businesses: action.payload.businesses.businesses,
-                totalBusinesses: action.payload.businesses.total
+                businesses: businessesData,
+                totalBusinesses: action.payload.businesses.total,
+                mostValuesBusinesses: getBusinessesFiltered,
+                loading: false,
+                errorMsg: ''
             }
-        case "LOADING":
-            return { ...state, isLoading: false}
+        case "FETCH_BUSINESSES_ERROR":
+            return { ...state, loading: false, errorMsg: 'unable to get businesses data' }
         case "CLEAR_BUSINESS_FETCH":
             return { ...state, businesses: [] }
         default:
