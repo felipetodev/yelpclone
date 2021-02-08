@@ -21,12 +21,14 @@ const geolocationReducer = (state=initState, action) => {
             }
             case "FETCH_GEOLOCATION_ERROR":
                 return { ...state, loading: false, errorMsg: '⚠️ Unable to get geo data :(' }
-                default:
-                    return { ...state }
             case "FETCH_GEOLOCATION_DATA":
                 return { ...state, 
                     geolocation: action.payload.geolocation
-                } 
+                }
+            case "FETCH_GEODATA_ERROR":
+                return { ...state, loading: false, errorMsg: 'User denied geolocation'}
+            default:
+                return { ...state }
     }
 }
 

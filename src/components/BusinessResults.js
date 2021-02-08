@@ -15,19 +15,19 @@ export default function BusinessResults() {
         }
     }, [dispatch, lastTerm, lastLocation])
 
-    const { mostValuesBusinesses, loading } = useSelector((state) => state.businesses)
+    const { mostValuesBusinesses, loading, errorMsg } = useSelector((state) => state.businesses)
 
     return (
         <div className='businesses__container'>
             <Spinner loading={loading} />
-            {lastTerm ? (
+            {mostValuesBusinesses.length ? (
                 <div className='recent__activity'>
                     <h2>Recent Activity</h2>
                     <span>{lastTerm} in {lastLocation}</span>
                 </div>
             ) : ''}
             {
-                mostValuesBusinesses.length ? mostValuesBusinesses.map((business) => (
+                !errorMsg ? mostValuesBusinesses.map((business) => (
                     <div key={business.id}>
                         <SearchResult
                             id={business.id}

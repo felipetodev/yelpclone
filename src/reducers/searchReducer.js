@@ -22,7 +22,10 @@ const searchReducer = (state=initState, action) => {
                 errorMsg: ''
             }
         case "FETCH_BUSINESSES_ERROR":
-            return { ...state, loading: false, errorMsg: 'unable to get businesses data' }
+            return { ...state, 
+                loading: false, 
+                errorMsg: "Sorry, but we didn't understand the location you entered."
+            }
         case "CLEAR_BUSINESS_FETCH":
             return { ...state, businesses: [] }
         default:

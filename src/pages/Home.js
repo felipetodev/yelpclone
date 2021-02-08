@@ -3,7 +3,7 @@ import Nav from '../components/Nav'
 import NavOptions from '../components/NavOptions'
 import Hero from '../components/Hero'
 import Wrapper from '../components/Wrapper'
-import { loadGeolocation } from '../actions/GeolocationAction'
+import { getGeolocation } from '../actions/GeolocationAction'
 import { useDispatch } from 'react-redux'
 import GeoResults from '../components/GeoResults'
 import BusinessResults from '../components/BusinessResults'
@@ -12,7 +12,7 @@ export default function Home() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(loadGeolocation())
+    dispatch(getGeolocation())
   }, [dispatch])
 
   return (

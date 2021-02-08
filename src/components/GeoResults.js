@@ -7,18 +7,25 @@ import Spinner from './Spinner'
 export default function GeoResults() {
     const dispatch = useDispatch()
     const { geolocation, mostValuesGeoBusinesses, loading, errorMsg } = useSelector((state) => state.geolocation)
-    const geolocationPath = geolocation.city || geolocation.country
+    const latitudePath = geolocation.latitude
+    const longitudePath = geolocation.longitude
 
     useEffect(() => {
-        if (geolocationPath && geolocationPath !== '') {
-            dispatch(loadGeoBusinesses('', geolocationPath))
+        if (latitudePath && latitudePath !== '') {
+            dispatch(loadGeoBusinesses(latitudePath, longitudePath))
         }
-    }, [dispatch, geolocationPath])
+    }, [dispatch, latitudePath, longitudePath])
 
     return (
         <div className='geolocation__container'>
             <div className='recent__activity'>
-                {errorMsg ? errorMsg : <h2>Most Values in {geolocationPath}</h2>}
+                {errorMsg ? errorMsg :
+                    <h2>Most Values Near {
+                        mostValuesGeoBusinesses.length
+                            ? mostValuesGeoBusinesses[0].location.city
+                            : 'You'}
+                    </h2>
+                }
             </div>
             <Spinner loading={loading} />
             {

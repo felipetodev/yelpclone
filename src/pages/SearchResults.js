@@ -20,16 +20,19 @@ export default function SearchResults() {
         dispatch(loadSearchBusinesses(termPath, locationPath))
     }, [dispatch, termPath, locationPath])
 
-    const { businesses, loading } = useSelector((state) => state.businesses)
+    const { businesses, loading, errorMsg } = useSelector((state) => state.businesses)
 
     return (
         <div>
             <Nav term={termPath} location={locationPath}/>
             <NavOptions />
-            <SearchSummary term={termPath} location={locationPath} />
+            <SearchSummary term={termPath} location={locationPath} error={errorMsg}/>
             <Spinner loading={loading} />
+            {errorMsg.length ? (
+                <h3 className='search__result'>{errorMsg} "{locationPath || termPath}"</h3>
+            ) : ''}
             {
-                businesses.length ? businesses.map((business) => (
+                !errorMsg ? businesses.map((business) => (
                     <div key={business.id}>
                         <SearchResult 
                             id={business.id}

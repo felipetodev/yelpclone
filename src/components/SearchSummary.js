@@ -1,13 +1,17 @@
 import { useSelector } from 'react-redux'
 
-export default function SearchSummary({ term, location }) {
+export default function SearchSummary({ term, location, error }) {
 
     const { businesses, totalBusinesses } = useSelector((state) => state.businesses)
+
+    if(error) return ''
     
     return (
         <>
             <div className='search__summary'>
-                <h1><strong>{term}</strong> in <strong>{location}</strong></h1>
+                {term.length ? 
+                    <h1><strong>{term}</strong> in <strong>{location}</strong></h1>
+                : <h1>Top {businesses.length} Best Places near {location}</h1>}
                 <p>Showing 1-{businesses.length} out of <span>{totalBusinesses}</span> results</p>
             </div>
             <div className='search__filters'>

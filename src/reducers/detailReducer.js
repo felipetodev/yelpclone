@@ -15,7 +15,7 @@ const detailReducer = (state=initState, action) => {
             const date = new Date()
             const indexDay = date.getDay()
 
-            const getActualOpenHours = detailData.hours[0].open.filter(item => item.day === indexDay)
+            const getActualOpenHours = detailData.hours ? detailData.hours[0].open.filter(item => item.day === indexDay) : ''
             return { ...state, 
                 detail: action.payload.detail, 
                 hourSchedule: getActualOpenHours,

@@ -35,11 +35,11 @@ export default function SearchResultDetail() {
                             <OpenStatus 
                                 hours={detail.hours ? detail.hours[0].is_open_now : ''}
                             />
-                            {hourSchedule.map(hour => (
+                            {hourSchedule ? hourSchedule.map(hour => (
                                 <p key={hour.start + hour.end}>{timeFormat(hour.start)} - {timeFormat(hour.end)} 
                                     <strong className={hourSchedule.length > 1 ? 'display-dot' : 'remove-dot'}>•</strong>
                                 </p>
-                            ))}
+                            )) : ''}
                         </div>
                     </div>
                 </div>
