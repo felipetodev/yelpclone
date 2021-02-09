@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux'
 import OpenStatus from './OpenStatus'
 import Rating from './Rating'
-import Spinner from './Spinner'
+import imageError from '../assets/images/no-image.png'
 
 export default function SearchResultDetail() {
     const { detail, hourSchedule } = useSelector((state) => state.detail)
@@ -10,10 +10,10 @@ export default function SearchResultDetail() {
     return (
         <>
             {detail.id ? (<div className='search__result-detail'>
-                <img src={detail.image_url} alt={detail.name} />
+                <img src={detail.image_url ? detail.image_url : imageError} alt={detail.name} />
                 <div className='search__detail'>
                     <div className='store__logo'>
-                        <img src={detail.image_url} alt={detail.alias} />
+                        <img src={detail.image_url ? detail.image_url : imageError} alt={detail.alias} />
                     </div>
                     <div className='store__description'>
                         <h1>{detail.name}</h1>
@@ -26,7 +26,7 @@ export default function SearchResultDetail() {
                         </div>
                         <div className='store__info'>
                             <span className='is__claimed'>{detail.is_claimed === true ? '✔ Claimed' : '⚠ Unclaimed'}</span>
-                            <span>• {detail.price} •</span>
+                            <span>{detail.price ? `• ${detail.price} •` : '•'}</span>
                             {detail.categories ? (detail.categories.map((category, index) => (
                                 <button key={index}>{category.alias}</button>
                             ))) : null}
@@ -43,7 +43,7 @@ export default function SearchResultDetail() {
                         </div>
                     </div>
                 </div>
-            </div>) : <Spinner />}
+            </div>) : ''}
         </>
     )
 }

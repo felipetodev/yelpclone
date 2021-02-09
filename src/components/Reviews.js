@@ -1,6 +1,6 @@
 import imageError from '../assets/images/no-image.png'
 
-export default function Reviews({ id, text, timeCreated, user }) {
+export default function Reviews({ id, text, user }) {
     return (
         <div className='review__container'>
             <div className='user__container'>

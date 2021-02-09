@@ -20,7 +20,7 @@ const geolocationReducer = (state=initState, action) => {
                 errorMsg: ''
             }
             case "FETCH_GEOLOCATION_ERROR":
-                return { ...state, loading: false, errorMsg: '⚠️ Unable to get geo data :(' }
+                return { ...state, loading: false, errorMsg: 'Unable to get data :(' }
             case "FETCH_GEOLOCATION_DATA":
                 return { ...state, 
                     geolocation: action.payload.geolocation

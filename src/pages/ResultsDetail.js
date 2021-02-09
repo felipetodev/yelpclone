@@ -33,8 +33,8 @@ export default function ResultsDetail() {
                         key={review.id} 
                         id={review.id}
                         text={review.text}
-                        timeCreated={review.time_created}
                         user={review.user}
+                        rating={review.rating}
                     />
                 ))) 
             : <span className='review__container'>No reviews 😢</span>}
