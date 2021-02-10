@@ -1,8 +1,10 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { loadSearchBusinesses } from '../actions/BusinessesSearchAction'
-import SearchResult from '../components/SearchResult'
+import { loadSearchBusinesses } from 'actions/BusinessesSearchAction'
+import SearchResult from 'components/SearchResult'
 import Spinner from './Spinner'
+
+const INITIAL_PAGE = 0
 
 export default function BusinessResults() {
     const dispatch = useDispatch()
@@ -11,7 +13,11 @@ export default function BusinessResults() {
 
     useEffect(() => {
         if (lastLocation && lastLocation !== '') {
-            dispatch(loadSearchBusinesses(lastTerm, lastLocation))
+            dispatch(loadSearchBusinesses({
+                termKeyword: lastTerm,
+                locationKeyword: lastLocation,
+                page: INITIAL_PAGE
+            }))
         }
     }, [dispatch, lastTerm, lastLocation])
 

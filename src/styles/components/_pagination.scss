@@ -1,0 +1,30 @@
+.pagination__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    padding: 20px 0;
+    margin: 20px auto;
+    color: #757280;
+    border-top: $cardBorders;
+    border-bottom: $cardBorders;
+
+    @media (min-width: 768px) {
+        width: 750px;
+    }
+
+    .pagination__numbers {
+        span {
+            padding: 0 6px;
+            cursor: pointer;
+
+            &:hover {
+                color: $black;
+            }
+        }
+
+        .active {
+            font-weight: bold;
+        }
+    }
+}

@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { loadGeoBusinesses } from '../actions/GeolocationAction'
+import { loadGeoBusinesses } from 'actions/GeolocationAction'
 import SearchResult from './SearchResult'
 import Spinner from './Spinner'
 

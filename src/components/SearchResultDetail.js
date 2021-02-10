@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux'
 import OpenStatus from './OpenStatus'
 import Rating from './Rating'
-import imageError from '../assets/images/no-image.png'
+import imageError from 'assets/images/no-image.png'
 
 export default function SearchResultDetail() {
     const { detail, hourSchedule } = useSelector((state) => state.detail)

@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import Rating from '../components/Rating'
-import Tags from '../components/Tags'
+import Tags from 'components/Tags'
 import { Link } from 'react-router-dom'
-import imageError from '../assets/images/no-image.png'
+import imageError from 'assets/images/no-image.png'
 
 export default function SearchResult({ id, name, alias, image, categories, rating, review, phone, location, price, transactions }) {
     const [ fav, setFav ] = useState('')

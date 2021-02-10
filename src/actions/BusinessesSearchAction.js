@@ -1,6 +1,6 @@
 import { yelpSearchBusinessesURL } from '../api'
 
-export const loadSearchBusinesses = (term_key, location_key) => async (dispatch) => {
+export const loadSearchBusinesses = (termKeyword, locationKeyword) => async (dispatch) => {
     const options = {
         headers: {
             Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`,
@@ -13,7 +13,7 @@ export const loadSearchBusinesses = (term_key, location_key) => async (dispatch)
         type: "LOADING_BUSINESSES"
     })
 
-    await fetch(yelpSearchBusinessesURL(term_key, location_key), options)
+    await fetch(yelpSearchBusinessesURL(termKeyword, locationKeyword), options)
         .then(res => res.json())
         .then(businessesData => {
             dispatch({
