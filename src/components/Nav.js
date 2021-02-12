@@ -1,9 +1,10 @@
+import React from 'react'
 import Logo from './Logo'
 import SearchBar from './SearchBar'
 import NavRight from './NavRight'
 import { useHistory } from 'react-router-dom'
 
-export default function Nav({ term, location }) {
+function Nav({ term, location }) {
 
     const history = useHistory()
 
@@ -14,12 +15,12 @@ export default function Nav({ term, location }) {
     }
 
     return (
-        <>
-            <nav className='nav__container'>
-                <Logo />
-                <SearchBar search={search} term={term} location={location}/>
-                <NavRight />
-            </nav>
-        </>
+        <nav className='nav__container'>
+            <Logo />
+            <SearchBar search={search} term={term} location={location} />
+            <NavRight />
+        </nav>
     )
 }
+
+export default React.memo(Nav)

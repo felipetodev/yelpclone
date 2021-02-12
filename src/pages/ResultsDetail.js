@@ -15,7 +15,6 @@ export default function ResultsDetail() {
 
     useEffect(() => {
         dispatch(loadDetailBusiness(pathId))
-        localStorage.setItem('viewed', pathId)
     }, [pathId, dispatch])
 
     const { reviews, loading } = useSelector((state) => state.detail)

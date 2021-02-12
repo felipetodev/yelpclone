@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { loadSearchBusinesses } from "actions/BusinessesSearchAction";
 import { useDispatch, useSelector } from 'react-redux'
 import { useLocation } from 'react-router-dom'
@@ -19,6 +19,8 @@ export default function SearchResults() {
     const termPath = params.get('find_desc')
     const locationPath = params.get('find_loc')
     const pagePath = params.get('start')
+
+    const [ page, setPage ] = useState(INITIAL_PAGE)
 
     useEffect(() => {
         dispatch(loadSearchBusinesses({
@@ -44,7 +46,7 @@ export default function SearchResults() {
                 <h3 className='search__result'>{errorMsg} "{locationPath || termPath}"</h3>
             ) : ''}
             {
-                !errorMsg ? businesses.map((business) => (
+                !loading ? businesses.map((business) => (
                     <div key={business.id}>
                         <SearchResult 
                             id={business.id}
@@ -64,7 +66,9 @@ export default function SearchResults() {
             }
             <Pagination 
                 totalPags={totalPagination} 
-                term={termPath} 
+                page={parseInt(page)}
+                setPage={setPage}
+                term={termPath}
                 location={locationPath}
             />
         </div>

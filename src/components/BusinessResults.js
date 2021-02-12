@@ -21,7 +21,7 @@ export default function BusinessResults() {
         }
     }, [dispatch, lastTerm, lastLocation])
 
-    const { mostValuesBusinesses, loading, errorMsg } = useSelector((state) => state.businesses)
+    const { mostValuesBusinesses, loading } = useSelector((state) => state.businesses)
 
     return (
         <div className='businesses__container'>
@@ -33,7 +33,7 @@ export default function BusinessResults() {
                 </div>
             ) : ''}
             {
-                !errorMsg ? mostValuesBusinesses.map((business) => (
+                !loading ? mostValuesBusinesses.map((business) => (
                     <div key={business.id}>
                         <SearchResult
                             id={business.id}
