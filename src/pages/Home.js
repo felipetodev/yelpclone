@@ -14,7 +14,7 @@ export default function Home() {
   useEffect(() => {
     dispatch(getGeolocation())
   }, [dispatch])
-
+  
   return (
     <>
       <Wrapper>

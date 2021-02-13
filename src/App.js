@@ -7,9 +7,10 @@ import { Route, Switch } from 'react-router-dom'
 function App() {
   return (
     <Switch>
+      <Route path='/' component={Home} exact />
       <Route path='/search' component={SearchResults} />
       <Route path='/biz/:id' component={ResultsDetail} />
-      <Route path='/' component={Home} />
+      <Route path='*' component={() => <h1>ERROR: 404 :( 💔</h1>} />
     </Switch>
   );
 }

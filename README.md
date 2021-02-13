@@ -40,5 +40,6 @@ Esto evitara que tengamos problemas de CORS al consultar la API de yelp.
 ## Próximas características 
 
 - [x] 🔹 Geolocalización ✔️
-- [x] 🔹 Modo oscuro 
+- [x] 🔹 Modo oscuro ✔️
+- [x] 🔹 Paginación ✔️
 - [x] 🔹 Filtrar por $ / Tipo de entrega / etc. 
